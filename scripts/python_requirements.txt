@@ -1,0 +1,4 @@
+pygame
+matplotlib
+black
+pytest
