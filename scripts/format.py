@@ -7,7 +7,7 @@ EXCLUDE_DIRS = [
     ".vscode",
     "build",
     "libs",
-    "demeter-embedded-venv",
+    "controls-tutorial-venv",
     "managed_components",
     "generated",
 ]
