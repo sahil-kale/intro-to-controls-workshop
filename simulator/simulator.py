@@ -18,6 +18,7 @@ class Simulator:
 
     def run(self):
         try:
+            time_now = 0
             while True:
                 ref = self.renderer.get_selected_reference()
                 gains = self.renderer.get_selected_gains()
@@ -36,8 +37,13 @@ class Simulator:
                 )
                 new_pos = model.compute_new_position(force, self.dt)
                 self.renderer.set_object_state(new_pos, model.get_velocity)
+
+                labels = ["Reference", "Position", "Force"]
+                values = [ref, actual_pos, force]
+                self.renderer.plot(labels, values, time_now)
                 self.renderer.update()
                 time.sleep(self.dt)
+                time_now += self.dt
 
         except KeyboardInterrupt:
             click.secho("Exiting...", fg="red")
@@ -60,7 +66,7 @@ if __name__ == "__main__":
     model = SpringMassDamperModel(
         mass=1.0, k_spring=0.3, b_damper=0.05, midpos_m=simulation_length_m / 2
     )
-    renderer = Renderer(length_m=simulation_length_m, width=1600, height=800)
+    renderer = Renderer(length_m=simulation_length_m, width=1600, height=1200)
     simulator = Simulator(
         controller, model, renderer, simulation_length_m, white_noise_percent=2
     )
