@@ -2,3 +2,4 @@ pygame
 matplotlib
 black
 pytest
+numpy
