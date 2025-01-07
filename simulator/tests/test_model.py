@@ -12,7 +12,7 @@ from simulator.model import SpringMassDamperModel
 def test_spring_mass_damper_model_integration():
     test_mass_kg = 1
     test_force_N = 2
-    model = SpringMassDamperModel(test_mass_kg, 0, 0)
+    model = SpringMassDamperModel(test_mass_kg, 0, 0, 0)
 
     assert pytest.approx(model.get_position()) == 0
 
@@ -30,7 +30,7 @@ def test_spring_mass_damper_model_spring():
     test_mass_kg = 1
     test_force_N = 3
     test_spring_k = 3
-    model = SpringMassDamperModel(test_mass_kg, test_spring_k, 0)
+    model = SpringMassDamperModel(test_mass_kg, test_spring_k, 0, 0)
     # set the initial position to 1 m - this is the equilibrium position
     model.x[0][0] = 1
 
