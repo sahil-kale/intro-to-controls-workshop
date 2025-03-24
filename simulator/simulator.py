@@ -4,7 +4,7 @@ from model import SpringMassDamperModel
 from renderer import Renderer
 import time
 import random
-
+import numpy as np
 
 class Simulator:
     def __init__(self, controller, model, renderer, length_m, white_noise_percent):
@@ -39,7 +39,7 @@ class Simulator:
                 self.renderer.set_object_state(new_pos, model.get_velocity)
 
                 labels = ["Reference", "Position", "Force"]
-                values = [ref, actual_pos, force]
+                values = [ref, actual_pos, np.clip(force, -self.model.control_saturation, self.model.control_saturation)]
                 self.renderer.plot(labels, values, time_now)
                 self.renderer.update()
                 time.sleep(self.dt)
@@ -64,10 +64,10 @@ if __name__ == "__main__":
     controller = Controller()
     simulation_length_m = 8
     model = SpringMassDamperModel(
-        mass=1.0, k_spring=0.3, b_damper=0.05, midpos_m=simulation_length_m / 2
+        mass=1.0, k_spring=0.3, b_damper=0.05, midpos_m=simulation_length_m / 2, control_saturation=8
     )
     renderer = Renderer(length_m=simulation_length_m, width=1600, height=1200)
     simulator = Simulator(
-        controller, model, renderer, simulation_length_m, white_noise_percent=2
+        controller, model, renderer, simulation_length_m, white_noise_percent=1
     )
     simulator.run()
