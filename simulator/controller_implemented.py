@@ -1,7 +1,7 @@
 class Controller:
     def __init__(self):
-        self.error_sum = 0
+        self.integral_term_sum = 0
         self.prev_error = 0
 
-    def update(self, setpoint, current_position, k_p, k_i, k_d):
+    def get_control_output(self, setpoint, current_position, dt, k_p, k_i, k_d):
         return 0

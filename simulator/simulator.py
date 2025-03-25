@@ -63,7 +63,16 @@ if __name__ == "__main__":
     parser.add_argument(
         "--solution", action="store_true", help="Use the solution controller"
     )
+    parser.add_argument(
+        "--no-noise",
+        action="store_true",
+        help="Disable white noise in the simulation",
+    )
     args = parser.parse_args()
+
+    noise_pct = 1
+    if args.no_noise:
+        noise_pct = 0
 
     if args.solution:
         from controller_solution import Controller
@@ -82,6 +91,6 @@ if __name__ == "__main__":
     )
     renderer = Renderer(length_m=simulation_length_m, width=1600, height=1200)
     simulator = Simulator(
-        controller, model, renderer, simulation_length_m, white_noise_percent=1
+        controller, model, renderer, simulation_length_m, white_noise_percent=noise_pct
     )
     simulator.run()
