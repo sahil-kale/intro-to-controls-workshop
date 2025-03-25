@@ -78,7 +78,7 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    noise_pct = 1
+    noise_pct = 0.5
     if args.no_noise:
         noise_pct = 0
 
@@ -90,10 +90,10 @@ if __name__ == "__main__":
     controller = Controller()
     simulation_length_m = 8
     model = SpringMassDamperModel(
-        mass=1.0,
+        mass=1.5,
         k_spring=0.3,
         max_spring_force_N=1,
-        b_damper=0.05,
+        b_damper=0.15,
         midpos_m=simulation_length_m / 2,
         control_saturation=8,
     )
