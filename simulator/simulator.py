@@ -1,3 +1,11 @@
+import sys
+
+if sys.platform.startswith("win"):
+    # win32 dpi issue???
+    import ctypes
+
+    ctypes.windll.user32.SetProcessDPIAware()
+
 import argparse
 import click
 from model import SpringMassDamperModel
