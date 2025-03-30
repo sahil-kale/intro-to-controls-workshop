@@ -40,6 +40,9 @@ Then, run `python3 simulator/simulator.py`
 
 ## Some notes
 
+### Window size
+If you find that the pygame window does not fit, change the width and height accordingly in `simulator.py` on line 100.
+
 ### It's actually gain-scheduled PID
 Given the gains can be dynamically updated by the simulator (effectively a gain scheduled approach), the integral summer should also multiply by the integral gain `k_i`. Ex:
 `integral_sum += error * dt * k_i`
