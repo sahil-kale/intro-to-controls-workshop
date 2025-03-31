@@ -51,3 +51,6 @@ Otherwise, any change in the integral gain can cause transient weirdness in the 
 
 ### The model is non-linear
 While originally using a canonical spring-mass-damper, it felt unintuitive to have the spring action come from the centre. Given the context of the presentation is vehicular systems, they don't have conventional spring action, but instead have non-linear spring effects (representing friction). As a result, the dynamic model saturates the amount of force given from the spring action to introduce steady-state error for the sake of learning, but also does not attempt to work like a regular spring.
+
+## Slides Link
+https://docs.google.com/presentation/d/1qD_pPkHmGp7AkPDejFUIfb_oU5DL514cuSB9fCuW2_M/edit#slide=id.p
